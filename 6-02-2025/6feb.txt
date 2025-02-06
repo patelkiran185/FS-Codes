@@ -1,0 +1,140 @@
+map()
+tranforms each elemnt of an array and returns a new array 
+it doesnot modify the original array
+
+filter()
+creates a new array with elements that satisfies given condition
+ returns a subset array 
+
+reduce()
+reduces an array to a single loop (eg sum,product,object)
+
+
+
+
+
+
+/*
+You have an array of product objects, each with name, price, 
+and sold (number of units sold). Use map to calculate the 
+revenue for each product, filter to include only products 
+with a revenue of $50 or more, and reduce to find the total 
+revenue from these high-selling products.
+
+
+Sample Input: 
+-------------
+5
+Shampoo 5 15
+Soap 2 20
+Toothpaste 3 10
+Conditioner 10 2
+Lotion 8 10
+
+Sample Output: 
+--------------
+155
+
+Explanation:
+------------
+Shampoo revenue = 5 * 15 = 75
+Soap revenue = 2 * 20 = 40 (not included, as it’s less than 50)
+Toothpaste revenue = 3 * 10 = 30 (not included)
+Conditioner revenue = 10 * 2 = 20 (not included)
+Lotion revenue = 8 * 10 = 80
+
+*/
+
+const readline = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function solution(products) {
+  //Write your code here and return number
+        const res=products.map(product => ({rev:product.price*product.sold}));
+        const j=res.filter(product => product.rev >= 50);
+        const ans=j.reduce((total,product)=> total+product.rev,0);
+        return ans;
+}
+
+readline.question("", (N) => {
+  N = parseInt(N);
+  let products = [];
+  let count = 0;
+
+  readline.on("line", (line) => {
+    const [name, price, sold] = line.split(" ");
+    products.push({ name, price: parseFloat(price), sold: parseInt(sold) });
+    count++;
+
+    if (count === N) {
+      const totalRevenue = solution(products);
+      console.log(totalRevenue);
+      readline.close();
+    }
+  });
+});
+
+
+
+/*
+You have an array of project objects, each with name, 
+revenue, and cost. Use filter to include only projects 
+where revenue is greater than cost (profitable projects), 
+map to calculate the profit for each project, and reduce 
+to find the total profit from these profitable projects.
+
+
+Sample Input:
+-------------
+5
+ProjectA 500 300
+ProjectB 200 250
+ProjectC 600 400
+ProjectD 150 100
+ProjectE 300 400
+
+Sample Output: 
+--------------
+450
+
+Explanation:
+------------
+Profitable projects are ProjectA, ProjectC, and ProjectD.
+Profits for each are: ProjectA = 200, ProjectC = 200, ProjectD = 50.
+Total profit = 200 + 200 + 50 = 450
+
+*/
+const readline = require("readline").createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+function solution(projects) {
+  //Write your code here and return number
+  const ans=projects.filter(product=> product.revenue > product.cost);
+  const j=ans.map(product=>product.revenue-product.cost);
+  const res=j.reduce((total,profit)=> total+profit,0);
+  return res;
+  
+}
+
+readline.question("", (N) => {
+  N = parseInt(N);
+  let projects = [];
+  let count = 0;
+
+  readline.on("line", (line) => {
+    const [name, revenue, cost] = line.split(" ");
+    projects.push({ name, revenue: parseFloat(revenue), cost: parseFloat(cost) });
+    count++;
+
+    if (count === N) {
+      const totalProfit = solution(projects);
+      console.log(totalProfit);
+      readline.close();
+    }
+  });
+});
+
