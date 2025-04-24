@@ -1,0 +1,6 @@
+web sockets
+why do we use web sockets? 
+how it is different from http and https
+
+websocets- connection oriented
+

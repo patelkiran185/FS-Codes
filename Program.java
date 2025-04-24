@@ -1,63 +1,54 @@
-// In Hyderabad after a long pandemic gap, the Telangana Youth festival is 
-// Organized at HITEX. In HITEX, there are a lot of programs planned. During 
-// the festival in order to maintain the rules of Pandemic, they put a 
-// constraint that one person can only attend any one of the programs in 
-// one day according to planned days.
 
-// Now it’s your aim to implement the "Solution" class in such a way that 
-// you need to return the maximum number of programs you can attend according 
-// to given constraints.
+// Captain Raynor is on a mission to decode an alien transmission.
+// The transmission contains a single long string S, and it is believed to be 
+// made up of multiple unique signal chunks, sent one after another with no spaces.
 
-// Explanation:
-// You have a list of programs 'p' and days 'd', where you can attend only 
-// one program on one day. Programs [p] = [first day, last day], 
-// p is the program's first day and the last day.
+// Your task is to help Captain Raynor split the transmission into the maximum 
+// number of non-empty, unique signal chunks such that when all chunks are 
+// concatenated in order, they exactly recreate the original transmission S.
 
+// Your goal is to maximize the number of unique chunks the message can be split into.
 
 // Input Format:
-// -------------
-// Line-1: An integer N, number of programs.
-// Line-2: N comma separated pairs, each pair(f_day, l_day) is separated by space.
+// Line-1: A string S representing the alien transmission.
 
 // Output Format:
-// --------------
-// An integer, the maximum number of programs you can attend.
-
+// Print a single integer – the maximum number of distinct chunks the string can be split into.
 
 // Sample Input-1:
 // ---------------
-// 4
-// 1 2,2 4,2 3,2 2
+// banana
 
 // Sample Output-1:
 // ----------------
 // 4
 
+// Explanation: 
+// ------------
+// One valid way to split the string is: "b", "a", "n", "ana".
+// This keeps all chunks unique.
+// Another way like "b", "a", "n", "an", "a" is invalid because "a" appears twice.
+
+
 // Sample Input-2:
 // ---------------
-// 6
-// 1 5,2 3,2 4,2 2,3 4,3 5
+// mississippi
 
 // Sample Output-2:
 // ----------------
-// 5
-import java.util.*;
-class Program{
-    public static void main(String args[]){
-        Scanner sc=new Scanner(System.in);
-        int n=sc.nextInt();
-        int[] arr=new int[n*n];
-        for(int i=0;i<n;i++){
-            String s=sc.next();
-            String[] str=s.split(",");
-            for(int j=0;j<str.length;j++){
-                String[] str1=str[j].split(" ");
-                arr[i*n+j]=Integer.parseInt(str1[0]);
-                arr[i*n+j+n]=Integer.parseInt(str1[1]);
-            }
-        }
-        for(int i=0:arr){
-            System.out.print(arr[i]+" ");
-        }
-    }
+// 7
+
+// Explanation: 
+// ------------
+// One valid way to split it is: "m", "i", "s", "si", "ssi", "p", "pi".
+// All chunks are distinct and together recreate the original transmission.
+
+// NOTE: Only contiguous chunks (i.e., substrings) are allowed. Subsequence-based 
+//       splitting is not permitted.
+
+
+
+
+public class Program {
+    
 }
