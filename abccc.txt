@@ -1,0 +1,73 @@
+Design a Java application to simulate a university’s student course registration 
+system. 
+
+This system should:
+ - Register Undergraduate and Postgraduate students
+ - Enforce course registration limits based on student type
+ - Throw exceptions when course limits are exceeded
+ - Sort and display student records
+ - Demonstrate key OOP principles such as inheritance, abstract classes, interfaces, 
+ - custom exceptions, encapsulation, and comparators
+
+Implement the following:
+--------------------------
+✅ Interface: Printable
+	Method: void printDetails()
+
+✅ Class: Course
+	Fields: code, title, credits
+	Constructor and toString() → returns "code - title"
+
+✅ Abstract Class: Student implements Printable
+	Fields: name, id, List<Course>
+	Abstract Method: int getMaxCourses()
+	Method: registerCourse(Course) → throws CourseLimitExceededException 
+	              if the limit is exceeded
+	toString() → returns "name (id)"
+	printDetails() → prints student info and registered courses
+
+✅ Class: Undergraduate extends Student
+	Method: 
+		- getMaxCourses() returns 3
+
+✅ Class: Postgraduate extends Student
+	Method: 
+		- getMaxCourses() returns 2
+
+✅ Class: CourseLimitExceededException extends Exception
+	Custom exception with a message
+
+✅ Class: StudentNameComparator implements Comparator<Student>
+	Sorts students alphabetically by name (case-insensitive)
+
+✅ Class: University implements Printable
+	Fields: name, List<Student>
+	Methods:
+		- addStudent(Student)
+		- printAllStudents()
+		- printSortedStudentsByName() → uses StudentNameComparator
+ 
+Sample Input:
+-------------
+Tech University
+1
+UG Alice 101 4
+CS101 DataStructures 4
+CS102 AI 3
+CS103 OS 4
+CS104 DBMS 3
+
+
+Sample Output:
+-------------
+Alice cannot register for more than 3 courses.
+All students:
+Alice (101)
+  Registered: CS101 - DataStructures
+  Registered: CS102 - AI
+  Registered: CS103 - OS
+Sorted students by name:
+Alice (101)
+  Registered: CS101 - DataStructures
+  Registered: CS102 - AI
+  Registered: CS103 - OS

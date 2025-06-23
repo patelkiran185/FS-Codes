@@ -1,5 +1,5 @@
 
-import java.util.*;
+
 import java.util.concurrent.*;
 class MyCallable implements Callable<String> {
 
@@ -12,7 +12,7 @@ class MyCallable implements Callable<String> {
 
 }
 
-public class Test {
+public class CallableTest {
 
     public static void main(String[] args) throws Exception {
 
